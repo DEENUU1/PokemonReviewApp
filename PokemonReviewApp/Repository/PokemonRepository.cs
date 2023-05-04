@@ -22,13 +22,13 @@ namespace PokemonReviewApp.Repository
 
         public Pokemon GetPokemon(string name)
         {
-            return _context.Pokemon.Where(p => p.Name = name).FirstOrDefault();
+            return _context.Pokemon.Where(p => p.Name == name).FirstOrDefault();
         }
 
         public decimal GetPokemonRating(int pokeId)
         {
             var review = _context.Reviews.Where(p => p.Pokemon.Id == pokeId);
-            if (reviews.Count() <= 0)
+            if (review.Count() <= 0)
                 return 0;
             return ((decimal)review.Sum(r => r.Rating) / review.Count());
         }
