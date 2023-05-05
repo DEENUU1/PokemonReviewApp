@@ -7,6 +7,11 @@ namespace PokemonReviewApp.Repository
     public class CategoryRepository : ICategoryRepository
     {
         private DataContext _context;
+
+        public CategoryRepository()
+        {
+        }
+
         public CategoryRepository(DataContext context)
         {
             _context = context;
@@ -19,6 +24,12 @@ namespace PokemonReviewApp.Repository
         public bool CreateCategory(Category category)
         {
             _context.Add(category);
+            return Save();
+        }
+
+        public bool DeleteCategory(Category category)
+        {
+            _context.Remove(category);
             return Save();
         }
 
